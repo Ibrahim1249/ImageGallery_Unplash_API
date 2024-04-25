@@ -5,6 +5,7 @@ const imageGallery = document.querySelector(".image-gallery");
 const moreImage = document.querySelector(".more-image");
 const moreBtn = document.querySelector(".more-image button");
 const resetBtn = document.querySelector("#reset");
+const arrow = document.querySelector(".arrow");
 
 let page = 1;
 
@@ -20,11 +21,13 @@ async function fetchData(){
       imageGallery.innerHTML=""
    }
    moreImage.style.display = "none";
+   arrow.style.display = "none";
 
    data.results.forEach((img,idx)=>{
        displayImage(img.urls.regular);
    })
    moreImage.style.display = "flex";
+   arrow.style.display = "block";
    console.log(data.results);
 }
 
@@ -82,8 +85,13 @@ resetBtn.addEventListener("click",()=>{
     userInput.value = "";
     imageGallery.innerHTML="";
     moreImage.style.display = "none";
+    arrow.style.display = "none";
 })
 
+
+// window.addEventListener("scroll",()=>{
+//    arrow.style.display = "block";
+// })
 // function imageDownload(event) {
 
 //    let imageUrl = event.target.parentElement.parentElement.childNodes[0].src;
